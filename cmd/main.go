@@ -13,7 +13,7 @@ var GithubClientSecret = os.Getenv("GITHUB_CLIENT_SECRET")
 
 func main() {
 	if GithubClientID == "" || GithubClientSecret == "" || len(GithubClientID) == 0 || len(GithubClientSecret) == 0 {
-		//	log.Fatal("GithubClientID and GithubClientSecret are required")
+		log.Fatal("GithubClientID and GithubClientSecret are required")
 	}
 
 	http.HandleFunc("/", v1.RootHandler)

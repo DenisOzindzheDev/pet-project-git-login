@@ -25,5 +25,5 @@ func GithubLoginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	http.SetCookie(w, c)
 	redirectURL := fmt.Sprintf("https://github.com/login/oauth/authorize?client_id=%s&state=%s", os.Getenv("GITHUB_CLIENT_ID"), state)
-	http.Redirect(w, r, redirectURL, 301)
+	http.Redirect(w, r, redirectURL, http.StatusMovedPermanently)
 }
