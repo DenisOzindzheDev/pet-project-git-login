@@ -1,0 +1,19 @@
+FROM golang:1.19
+
+ENV GITHUB_CLIENT_ID="0d8cec9bd2f549bca116"
+ENV GITHUB_CLIENT_SECRET="465f4126e113a0b36aa892e3c97fd291883ef0c7"
+ENV CGO_ENABLED="0"
+ENV GO111MODULE="on"
+ENV GOFLAGS=-mod=vendor
+
+LABEL Author = "denis.ozindzhe@tages.ru"
+
+WORKDIR /app
+COPY . . 
+
+RUN go mod download
+RUN go build -o github.com/DenisOzindzheDev/pet-project-git-login cmd/main.go
+
+EXPOSE 8080
+
+CMD ["github.com/DenisOzindzheDev/pet-project-git-login"]
